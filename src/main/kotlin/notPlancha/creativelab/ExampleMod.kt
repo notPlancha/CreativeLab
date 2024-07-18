@@ -1,6 +1,6 @@
-package example.examplemod
+package notPlancha.creativelab
 
-import example.examplemod.block.ModBlocks
+import notPlancha.creativelab.block.ModBlocks
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -32,7 +32,7 @@ import kotlin.time.Duration.Companion.seconds
 @Mod(ExampleMod.ID)
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 object ExampleMod {
-    const val ID = "examplemod"
+    const val ID = "creative_lab"
 
     // the logger for our mod
     val LOGGER: Logger = LogManager.getLogger(ID)
@@ -45,11 +45,11 @@ object ExampleMod {
 
         val obj = runForDist(
             clientTarget = {
-                MOD_BUS.addListener(::onClientSetup)
+                MOD_BUS.addListener(ExampleMod::onClientSetup)
                 Minecraft.getInstance()
             },
             serverTarget = {
-                MOD_BUS.addListener(::onServerSetup)
+                MOD_BUS.addListener(ExampleMod::onServerSetup)
                 "test"
             })
 
